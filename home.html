@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<p>Press the button bellow to sign up for Ocean Sands Beach Inn's automated email shift reminder</p>
+<form action="/send_shift_reminder" method="post">
+    <button onclick=sendShiftReminder() id="Button" class="Button">Send Shift Reminders</button>
+</form>
+
+<script>
+    function send_shift_reminder() {
+        fetch('/send_shift_reminder')
+            .then(response => response.text())
+            .then(message => alert(message))
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+{% endblock %}
